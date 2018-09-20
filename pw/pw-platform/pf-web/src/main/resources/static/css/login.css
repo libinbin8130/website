@@ -5,7 +5,7 @@ body {
 
 .login-box {
     width: 500px;
-    height: 400px;
+    height: 350px;
     border: 1px solid #1a312c;
     position: absolute;
     left: 50%;
@@ -38,7 +38,7 @@ body {
 .input-box input {
     margin-top: 20px;
     border-radius: 5px;
-    height: 50px;
+    height: 40px;
 }
 
 dev {
@@ -91,7 +91,9 @@ dev {
 }
 
 .forget-password {
-    padding-right: 10px;
+    margin-right: 10px;
+    float: right;
+    color: #00a2ca;
 }
 
 .input-box .oauth {

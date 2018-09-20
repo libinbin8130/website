@@ -18,3 +18,12 @@ spring:
     encoding: UTF-8
     content-type: text/html
     cache: false #开发时关闭缓存,不然没法看到实时页面
+  # 引入自定义的js css 不缓存
+  resources:
+    chain:
+      strategy:
+        fixed:
+          enabled: true
+          paths: /css/**,/v1.0.0/css/**,/js/**,/v1.0.0/js/**
+          version: v1.0.0
+

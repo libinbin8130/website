@@ -2,12 +2,13 @@
 *.project
 *.iml
 *.cmd
-pw/.idea/*
-pw/*/.mvn/*
-pw/*/*/.mvn/*
+.idea
+pw/.idea
+pw/*/.mvn
+pw/*/*/.mvn
 pw/*/mvnw
 pw/*/*/mvnw
-pw/*/target/*
+pw/*/target
 *.gitignore
 *.gitattributes
 *.classpath
