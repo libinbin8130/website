@@ -1,0 +1,20 @@
+server:
+  port: 8099
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      default-zone: http://127.0.0.1:8761/eureka/
+  instance:
+    appname: eureka
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    prefer-ip-address: true
+
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    cache: false #开发时关闭缓存,不然没法看到实时页面
