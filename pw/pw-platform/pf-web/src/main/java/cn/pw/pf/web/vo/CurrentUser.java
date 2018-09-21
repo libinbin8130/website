@@ -3,8 +3,11 @@ package cn.pw.pf.web.vo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -15,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class CurrentUser {
+public class CurrentUser implements UserDetails {
 
     /**
      * 当前用户id
@@ -25,6 +28,11 @@ public class CurrentUser {
      * 当前用户登录名
      */
     private String userName;
+
+    /**
+     * 密码
+     */
+    private String password;
     /**
      * 当前用户姓名
      */
@@ -50,7 +58,47 @@ public class CurrentUser {
      */
     private List<Resource> resources;
     /**
-     * 当前用户对资源的操作权限
+     * 当前用户操作权限
      */
     private List<Permission> permissions;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        //对资源(菜单)的控制
+        List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
+        List<Resource> resources = this.resources;
+        //对操作(按钮)的控制
+        List<Permission> permissions = this.permissions;
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
