@@ -1,5 +1,7 @@
 package cn.pw.pf.web.controller;
 
+import cn.pw.pf.web.response.RestResponseResult;
+import cn.pw.pf.web.response.RestResultGenerator;
 import cn.pw.pf.web.vo.CurrentUser;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,9 +30,10 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public Object login(@RequestParam("userName") String userName,
-                        @RequestParam("password") String password,
-                        @RequestParam("validateCode") String validateCode){
-        return "OK";
+    public RestResponseResult<?> login(@RequestParam("userName") String userName,
+                                       @RequestParam("password") String password,
+                                       @RequestParam("validateCode") String validateCode){
+
+        return RestResultGenerator.success();
     }
 }
