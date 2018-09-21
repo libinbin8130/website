@@ -13,17 +13,27 @@ eureka:
     prefer-ip-address: true
 
 spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 6
+    password:
+    timeout: 1000
+    pool:
+      max-active: 20
+      min-idle: 2
+      max-idle: 10
   thymeleaf:
-    mode: HTML5
-    encoding: UTF-8
-    content-type: text/html
-    cache: false #开发时关闭缓存,不然没法看到实时页面
+      mode: HTML5
+      encoding: UTF-8
+      content-type: text/html
+      cache: false #开发时关闭缓存,不然没法看到实时页面
   # 引入自定义的js css 不缓存
   resources:
     chain:
       strategy:
         fixed:
           enabled: true
-          paths: /css/**,/v1.0.0/css/**,/js/**,/v1.0.0/js/**
+          paths: /css/**,/v1.0.0/css/**,/js/**,/v1.0.0/js/**,/images/**,/v1.0.0/images/**
           version: v1.0.0
 

@@ -9,6 +9,7 @@ pw/*/*/.mvn
 pw/*/mvnw
 pw/*/*/mvnw
 pw/*/target
+pw/*/*/target
 *.gitignore
 *.gitattributes
 *.classpath

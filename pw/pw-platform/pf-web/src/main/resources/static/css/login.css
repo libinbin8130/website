@@ -4,11 +4,11 @@ body {
 }
 
 .login-box {
-    width: 500px;
+    width: 450px;
     height: 350px;
     border: 1px solid #1a312c;
     position: absolute;
-    left: 50%;
+    left: 60%;
     top: 40%;
     margin-left: -150px;
     margin-top: -150px;
@@ -67,7 +67,7 @@ dev {
     color: #00a2ca;
     display: block;
     float: left;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .input-box input[type="submit"] {
@@ -93,7 +93,8 @@ dev {
 .forget-password {
     margin-right: 10px;
     float: right;
-    color: #00a2ca;
+    color: #cbcbcb;
+    font-size: 14px;
 }
 
 .input-box .oauth {

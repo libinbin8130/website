@@ -1,9 +1,10 @@
 package cn.pw.pf.web.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cn.pw.pf.web.vo.CurrentUser;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 登陆控制器
@@ -18,5 +19,18 @@ public class LoginController {
     public ModelAndView login(ModelAndView modelAndView){
         modelAndView.setViewName("/login");
         return modelAndView;
+    }
+
+    @GetMapping("/index")
+    public ModelAndView index(ModelAndView modelAndView){
+        modelAndView.setViewName("/index");
+        return modelAndView;
+    }
+
+    @PostMapping("/login")
+    public Object login(@RequestParam("userName") String userName,
+                        @RequestParam("password") String password,
+                        @RequestParam("validateCode") String validateCode){
+        return "OK";
     }
 }

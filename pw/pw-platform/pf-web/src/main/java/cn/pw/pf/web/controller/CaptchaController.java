@@ -51,9 +51,11 @@ public class CaptchaController extends BaseController{
             }
             BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
             Graphics g = image.getGraphics();
-            g.setColor(getRandColor(220, 250));// 生成背景
+            // 生成背景
+            g.setColor(getRandColor(220, 250));
             g.fillRect(0, 0, w, h);
-            for (int i = 0; i < 8; i++) // 加入干扰线条
+            // 加入干扰线条
+            for (int i = 0; i < 8; i++)
             {
                 g.setColor(getRandColor(40, 150));
                 Random random = new Random();
