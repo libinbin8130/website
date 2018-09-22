@@ -22,7 +22,7 @@
         </div>
         <div class="input-box">
             <form class="layui-form" method="post">
-                <input type="text" name="userName" required="required" lay-verify="required" placeholder="账号" autocomplete="off" class="layui-input" />
+                <input type="text" name="username" required="required" lay-verify="required" placeholder="账号" autocomplete="off" class="layui-input" />
                 <input type="password" name="password" required="required" lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input" />
                 <div class="validate-code">
                     <input type="text" name="validateCode" required="required" lay-verify="required" placeholder="验证码" maxlength="4" autocomplete="off" class="layui-input" />
@@ -63,7 +63,7 @@
 
             form.on('submit(login)', function (data) {
                 layer.msg("登陆中...", {icon: 6, time: 1000, anim: 4}, function () {
-                    $.post("/login",data.field,function(res){
+                    $.post("/tologin",data.field,function(res){
                         if(200 == res.code){
                             layer.msg(res.message, {time: 2000});
                             setTimeout(window.location.href="/index",2000);

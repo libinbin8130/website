@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -27,8 +28,7 @@ public class CurrentUser implements UserDetails {
     /**
      * 当前用户登录名
      */
-    private String userName;
-
+    private String username;
     /**
      * 密码
      */
@@ -42,6 +42,18 @@ public class CurrentUser implements UserDetails {
      */
     private Integer type;
     /**
+     * 用户可登录系统（支持一个用户可以登录多个系统）
+     */
+    private List<SystemModel> currentModels;
+    /**
+     * 是否管理员
+     */
+    private boolean admin;
+    /**
+     * 是否开发者
+     */
+    private boolean developer;
+    /**
      * 上次一次登录日期
      */
     private Long lastLoginDate;
@@ -54,22 +66,38 @@ public class CurrentUser implements UserDetails {
      */
     private String currentLoginIp;
     /**
-     * 当前用户可访问资源
-     */
-    private List<Resource> resources;
-    /**
-     * 当前用户操作权限
+     * 用户权限
      */
     private List<Permission> permissions;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //对资源(菜单)的控制
         List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-        List<Resource> resources = this.resources;
-        //对操作(按钮)的控制
+        //系统角色
+        if (admin) {
+            auths.add(new SimpleGrantedAuthority("ADMIN_ROLE"));
+        }else{
+            auths.add(new SimpleGrantedAuthority("USER_ROLE"));
+        }
+        if (developer) {
+            auths.add(new SimpleGrantedAuthority("DEVELOP_ROLE"));
+        }
+        //控制权限
         List<Permission> permissions = this.permissions;
-        return null;
+        if(null == permissions || permissions.size() <= 0){
+            return auths;
+        }
+        for(Permission permission:permissions){
+            String resourceSign = permission.getResource().getSign();
+            auths.add(new SimpleGrantedAuthority(resourceSign));
+            List<Opration> oprations = permission.getOprations();
+            if (null != oprations) {
+                oprations.forEach(p -> {
+                    auths.add(new SimpleGrantedAuthority(resourceSign + ":" + p));
+                });
+            }
+        }
+        return auths;
     }
 
     @Override
@@ -79,7 +107,7 @@ public class CurrentUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.userName;
+        return this.username;
     }
 
     @Override

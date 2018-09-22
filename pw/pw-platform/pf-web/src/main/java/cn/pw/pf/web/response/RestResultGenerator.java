@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
  * @author: libin
  * @date: 19:10 2018/9/21
  */
-public class RestResultGenerator<T> {
+public class RestResultGenerator {
 
     /**
      * 成功，无数据返回

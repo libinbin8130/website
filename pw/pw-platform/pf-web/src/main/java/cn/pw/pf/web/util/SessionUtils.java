@@ -1,6 +1,5 @@
 package cn.pw.pf.web.util;
 
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
  * @date: 11:53 2018/9/21
  */
 @Slf4j
-@Log
 public class SessionUtils {
 
     /**
