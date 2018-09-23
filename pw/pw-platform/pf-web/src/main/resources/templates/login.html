@@ -20,8 +20,11 @@
             <span>欢迎登陆</span>
             <a href="javascript:void(0);" class="register">注册</a>
         </div>
+        <div class = "error-info">
+            <span th:if="${param.error}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+        </div>
         <div class="input-box">
-            <form class="layui-form" method="post">
+            <form class="layui-form" th:action="@{/tologin}" method="post">
                 <input type="text" name="username" required="required" lay-verify="required" placeholder="账号" autocomplete="off" class="layui-input" />
                 <input type="password" name="password" required="required" lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input" />
                 <div class="validate-code">
@@ -61,22 +64,12 @@
             var form = layui.form;
             var layer = layui.layer;
 
-            form.on('submit(login)', function (data) {
-                layer.msg("登陆中...", {icon: 6, time: 1000, anim: 4}, function () {
-                    $.post("/tologin",data.field,function(res){
-                        if(200 == res.code){
-                            layer.msg(res.message, {time: 2000});
-                            setTimeout(window.location.href="/index",2000);
-                        }else{
-                            $('.layui-form')[0].reset();
-                            layer.msg(res.message, {time: 2000});
-                        }
-                    }).error(function(){
-                        layer.msg("网络异常", {time: 2000});
-                    });
-                });
-                return false;
-            });
+            <!--form.on('submit(login)', function (data) {-->
+                <!--layer.msg("登陆中...", {icon: 6, time: 1000, anim: 4}, function () {-->
+      <!---->
+                <!--});-->
+                <!--return false;-->
+            <!--});-->
 
 //            $(".oauth .icon-WechatIMG").click(function () {
 //                layer.msg('正在打开Gitee登陆页面，请稍后...');

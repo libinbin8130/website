@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 登陆控制器
+ *
  * @author: libin
  * @date: 18:19 2018/9/20
  */
@@ -23,23 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     @GetMapping("/index")
-    public ModelAndView index(ModelAndView modelAndView){
+    public ModelAndView index(ModelAndView modelAndView) {
         modelAndView.setViewName("/index");
         return modelAndView;
     }
 
-    @PostMapping("/tologin")
-    public RestResponseResult<?> login(@RequestParam("username") String username,
-                                       @RequestParam("password") String password,
-                                       @RequestParam("validateCode") String validateCode){
-
-        Authentication auth = SecurityContextHolder.getContext()
-                .getAuthentication();
-        if (auth instanceof AnonymousAuthenticationToken) {
-            return RestResultGenerator.failture(ResponseCode.USER_PWD_WRONG,"用户名或密码错误 ");
-        } else {
-           // Object pinciba = auth.getPrincipal();
-            return RestResultGenerator.success();
-        }
-    }
 }

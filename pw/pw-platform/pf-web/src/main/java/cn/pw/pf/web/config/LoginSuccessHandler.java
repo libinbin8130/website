@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * 登陆成功后的处理逻辑
+ *
  * @author: libin
  * @date: 15:56 2018/9/22
  */

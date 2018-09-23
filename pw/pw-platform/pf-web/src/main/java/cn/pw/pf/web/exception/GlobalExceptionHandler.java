@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
         }
         if (e instanceof CustomerException) {
             logger.warn("business error! {}", ((CustomerException) e).getResponseCode().getEn());
-            return RestResultGenerator.failture(((CustomerException) e).getResponseCode(),e.getMessage());
+            return RestResultGenerator.failture(((CustomerException) e).getResponseCode(), e.getMessage());
         }
         logger.error("system error! {}", e);
         return RestResultGenerator.systemFailture(e);

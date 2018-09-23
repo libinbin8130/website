@@ -5,6 +5,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 /**
  * redis 分布式会话,开启支持spring session
+ *
  * @author: libin
  * @date: 11:46 2018/9/21
  */

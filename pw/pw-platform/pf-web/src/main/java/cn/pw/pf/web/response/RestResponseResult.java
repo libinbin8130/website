@@ -6,6 +6,7 @@ import lombok.ToString;
 
 /**
  * 基于restfull的返回结果封装
+ *
  * @author: libin
  * @date: 19:00 2018/9/21
  */

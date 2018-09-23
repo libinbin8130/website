@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * session 操作工具类
+ *
  * @author: libin
  * @date: 11:53 2018/9/21
  */
@@ -17,9 +18,10 @@ public class SessionUtils {
 
     /**
      * return the HttpServletRequest currently bound to the thread.
+     *
      * @return
      */
-    public static HttpServletRequest currentRequest(){
+    public static HttpServletRequest currentRequest() {
         ServletRequestAttributes attrs =
                 (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         return attrs.getRequest();
@@ -27,50 +29,53 @@ public class SessionUtils {
 
     /**
      * return the HttpSession currently bound to the thread.
+     *
      * @return
      */
-    public static HttpSession currentSession(){
-         HttpServletRequest req = currentRequest();
-         HttpSession session = req.getSession();
-         log.debug("session id: " + session.getId());
-         return session;
+    public static HttpSession currentSession() {
+        HttpServletRequest req = currentRequest();
+        HttpSession session = req.getSession();
+        log.debug("session id: " + session.getId());
+        return session;
     }
 
     /**
      * Binds an object to this session, using the name specified.
      * If an object of the same name is already bound to the session, the object is replaced
+     *
      * @param name
      * @param value
      */
-    public static void put(String name,Object value){
+    public static void put(String name, Object value) {
         HttpSession session = currentSession();
         if (null == session) {
-            return ;
+            return;
         }
-        log.debug("put attribute: {}" ,name);
-        try{
-            session.setAttribute(name,value);
-        }catch (Exception e){
+        log.debug("put attribute: {}", name);
+        try {
+            session.setAttribute(name, value);
+        } catch (Exception e) {
             log.warn(e.getMessage());
-            log.warn("序列化异常",e);
+            log.warn("序列化异常", e);
             log.warn(Thread.getAllStackTraces().toString());
         }
     }
 
     /**
      * return the object bound with the specified name in session
+     *
      * @param name
      * @return
      */
-    public static Object get(String name){
+    public static Object get(String name) {
         HttpSession session = currentSession();
         if (null == session) {
             return null;
         }
-        log.debug("get attribute: {}" ,name);
-        try{
+        log.debug("get attribute: {}", name);
+        try {
             return session.getAttribute(name);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.warn(e.getMessage());
         }
         return null;
@@ -78,17 +83,18 @@ public class SessionUtils {
 
     /**
      * remove the object bound with the specified name from the session
+     *
      * @param name
      */
-    public static void remove(String name){
+    public static void remove(String name) {
         HttpSession session = currentSession();
         if (null == session) {
-            return ;
+            return;
         }
-        log.debug("remove attribute: {}" ,name);
-        try{
+        log.debug("remove attribute: {}", name);
+        try {
             session.removeAttribute(name);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.warn(e.getMessage());
         }
     }

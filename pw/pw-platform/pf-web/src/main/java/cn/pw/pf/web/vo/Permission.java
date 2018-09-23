@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 用户权限
+ *
  * @author: libin
  * @date: 14:41 2018/9/21
  */

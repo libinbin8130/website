@@ -6,6 +6,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
  * 启动类
+ *
  * @author: libin
  * @date: 19:54 2018/9/20
  */
@@ -13,7 +14,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @EnableEurekaServer
 public class PwEurekaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PwEurekaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PwEurekaApplication.class, args);
+    }
 }

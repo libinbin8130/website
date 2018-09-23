@@ -11,17 +11,18 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 
 /**
  * 启动类
+ *
  * @author: libin
  * @date: 19:54 2018/9/20
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackageClasses=UserClient.class)
+@EnableFeignClients(basePackageClasses = UserClient.class)
 @EnableAutoConfiguration
 @EnableHystrixDashboard
 public class WebApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebApplication.class, args);
+    }
 }

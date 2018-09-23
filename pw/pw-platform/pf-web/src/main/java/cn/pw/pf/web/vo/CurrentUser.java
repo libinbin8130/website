@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 当前登录用户
+ *
  * @author: libin
  * @date: 14:34 2018/9/21
  */
@@ -76,7 +77,7 @@ public class CurrentUser implements UserDetails {
         //系统角色
         if (admin) {
             auths.add(new SimpleGrantedAuthority("ADMIN_ROLE"));
-        }else{
+        } else {
             auths.add(new SimpleGrantedAuthority("USER_ROLE"));
         }
         if (developer) {
@@ -84,10 +85,10 @@ public class CurrentUser implements UserDetails {
         }
         //控制权限
         List<Permission> permissions = this.permissions;
-        if(null == permissions || permissions.size() <= 0){
+        if (null == permissions || permissions.size() <= 0) {
             return auths;
         }
-        for(Permission permission:permissions){
+        for (Permission permission : permissions) {
             String resourceSign = permission.getResource().getSign();
             auths.add(new SimpleGrantedAuthority(resourceSign));
             List<Opration> oprations = permission.getOprations();

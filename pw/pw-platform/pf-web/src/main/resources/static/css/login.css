@@ -41,11 +41,8 @@ body {
     height: 40px;
 }
 
-dev {
-    display: block;
-}
-
-.validate-code {
+.validate-code  {
+    display:block;
     height: 50px;
 }
 
@@ -97,6 +94,15 @@ dev {
     font-size: 14px;
 }
 
+.error-info {
+    margin-top:50px;
+    margin-bottom:-20px;
+}
+
+.error-info span {
+   margin-left:-90px;
+   color:rgb(255, 0, 0);
+}
 .input-box .oauth {
     margin-top: 20px;
 }

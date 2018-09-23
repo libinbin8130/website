@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * 用户服务调用熔断
+ *
  * @author: libin
  * @date: 10:46 2018/9/22
  */
@@ -29,7 +30,7 @@ public class UserClientFallbackFactory implements FallbackFactory<UserClient> {
             public RestResponseResult<CurrentUser> findUserInfo(CurrentUser user) {
                 user.setDeveloper(true);
                 user.setCurrentModels(CollectionUtils.arrayToList(SystemModel.values()));
-                user.setPassword(new BCryptPasswordEncoder().encode("123456"));
+                user.setPassword("123456");
                 List<Permission> permissions = new ArrayList<>();
                 Permission permission1 = new Permission();
                 Resource resource1 = new Resource();
@@ -39,8 +40,8 @@ public class UserClientFallbackFactory implements FallbackFactory<UserClient> {
                 permission1.setOprations(CollectionUtils.arrayToList(Opration.values()));
                 user.setPermissions(permissions);
                 return RestResultGenerator.success(user);
-             //   log.warn("userClient fallback in create:{},{}", cause.getMessage(), user.getUsername());
-             //   return RestResultGenerator.failture(ResponseCode.SERVER_FALLBACK,"内部服务请求异常，请稍后...");
+                //   log.warn("userClient fallback in create:{},{}", cause.getMessage(), user.getUsername());
+                //   return RestResultGenerator.failture(ResponseCode.SERVER_FALLBACK,"内部服务请求异常，请稍后...");
             }
         };
     }

@@ -6,6 +6,7 @@ import lombok.ToString;
 
 /**
  * 平台菜单资源
+ *
  * @author: libin
  * @date: 14:35 2018/9/21
  */

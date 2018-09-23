@@ -13,12 +13,13 @@ import java.util.List;
 
 /**
  * 平台服务
+ *
  * @author: libin
  * @date: 18:14 2018/9/20
  */
-@FeignClient(value="metis-user-server",url="127.0.0.1:8080",fallbackFactory = UserClientFallbackFactory.class)
+@FeignClient(value = "metis-user-server", url = "127.0.0.1:8080", fallbackFactory = UserClientFallbackFactory.class)
 public interface UserClient {
 
-    @RequestMapping(value="/user/findUserInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/findUserInfo", method = RequestMethod.POST)
     RestResponseResult<CurrentUser> findUserInfo(@RequestBody CurrentUser user);
 }
