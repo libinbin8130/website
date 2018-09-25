@@ -1,5 +1,6 @@
-package cn.pw.pf.web.exception;
+package cn.pw.pf.web.global;
 
+import cn.pw.pf.web.exception.CustomerException;
 import cn.pw.pf.web.response.RestResponseResult;
 import cn.pw.pf.web.response.RestResultGenerator;
 import org.slf4j.Logger;

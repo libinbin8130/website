@@ -6,7 +6,9 @@ import cn.pw.pf.web.response.RestResultGenerator;
 import cn.pw.pf.web.vo.*;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -30,7 +32,7 @@ public class UserClientFallbackFactory implements FallbackFactory<UserClient> {
             public RestResponseResult<CurrentUser> findUserInfo(CurrentUser user) {
                 user.setDeveloper(true);
                 user.setCurrentModels(CollectionUtils.arrayToList(SystemModel.values()));
-                user.setPassword("123456");
+                user.setPassword("$2a$10$8kc9dhvAS8BPQNgC23.HwOJdl6OjH3Q.k.mRfy7dGzaeQaFY7YQHW");
                 List<Permission> permissions = new ArrayList<>();
                 Permission permission1 = new Permission();
                 Resource resource1 = new Resource();

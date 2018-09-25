@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,6 +23,8 @@ import org.springframework.stereotype.Component;
 public class CustomerAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -32,12 +35,12 @@ public class CustomerAuthenticationProvider implements AuthenticationProvider {
             user = userService.loadUserByUsername(username);
         }
         if (null == user) {
-            throw new UsernameNotFoundException("用户名错误");
+            throw new UsernameNotFoundException("用户不存在");
         } else if (!user.isCredentialsNonExpired()) {
             throw new LockedException("凭证已过期");
         }
         String password = user.getPassword();
-        if (!password.equals(token.getCredentials())) {
+        if (!passwordEncoder.matches(token.getCredentials().toString(),password)) {
             throw new BadCredentialsException("密码错误");
         }
         return new UsernamePasswordAuthenticationToken(user, password, user.getAuthorities());

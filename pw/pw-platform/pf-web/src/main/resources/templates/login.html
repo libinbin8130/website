@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -21,7 +22,7 @@
             <a href="javascript:void(0);" class="register">注册</a>
         </div>
         <div class = "error-info">
-            <span th:if="${param.error}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+            <span th:if="${param.error}" th:text="${session?.SPRING_SECURITY_LAST_EXCEPTION?.message}"></span>
         </div>
         <div class="input-box">
             <form class="layui-form" th:action="@{/tologin}" method="post">
@@ -64,12 +65,20 @@
             var form = layui.form;
             var layer = layui.layer;
 
-            <!--form.on('submit(login)', function (data) {-->
-                <!--layer.msg("登陆中...", {icon: 6, time: 1000, anim: 4}, function () {-->
-      <!---->
-                <!--});-->
-                <!--return false;-->
-            <!--});-->
+           form.on('submit(login)', function (data) {
+               layer.msg('登录中...',{shade:[0.8, '#393D49'],time:60*60*1000});
+
+//              layer.confirm('确认提交？',{btn:['确认','取消']},function(index,layero){
+//                    if(!$(".layui-layer-btn0").hasClass("layui-btn-disabled")){
+//                        $(".layui-layer-btn0").addClass("layui-btn-disabled");
+//                        layer.close(index);
+//                        layer.msg('处理中...',{shade:[0.8, '#393D49'],time:60*60*1000});
+//                        $("form").submit();
+//                    }
+//               },function (index) {
+//
+//              });
+            });
 
 //            $(".oauth .icon-WechatIMG").click(function () {
 //                layer.msg('正在打开Gitee登陆页面，请稍后...');

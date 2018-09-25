@@ -28,5 +28,4 @@ public class LoginController {
         modelAndView.setViewName("/index");
         return modelAndView;
     }
-
 }
